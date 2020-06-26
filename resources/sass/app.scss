@@ -1,20 +1,8 @@
-@tailwind base;
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-@tailwind components;
+// Variables
+@import 'variables';
 
-
-// custom css
-.bg-blue-gradient {
-    background-image: linear-gradient(to right, #05668D, #157297);
-}
-
-
-.btn {
-    @apply px-4 py-2 font-semibold rounded-lg ;
-}
-
-.btn--main {
-    @apply bg-green-mid text-base;
-}
-
-@tailwind utilities;
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
