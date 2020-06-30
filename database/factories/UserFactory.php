@@ -26,3 +26,21 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+
+$factory->define(Profile::class, function (Faker $faker) {
+    return [
+        'phone' => $faker->phoneNumber(),
+        'city' => $faker->city(),
+        'province' => $faker->state(),
+    ];
+});
+
+
+$factory->define(Role::class, function (Faker $faker) {
+    return [
+        'phone' => $faker->mobileNumber(),
+        'city' => $faker->city(),
+        'province' => $faker->state(),
+    ];
+});

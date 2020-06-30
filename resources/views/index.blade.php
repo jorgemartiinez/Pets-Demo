@@ -2,16 +2,15 @@
 
 
 @section('content')
-<main class="container p-3 mx-auto my-16">
 
     <section class="mb-16">
         <div class="mb-12 font-bold text-center">
-            <h2 class="mb-4 text-5xl hd-secondary text-green-light">¿Ya no puedes hacerte cargo de tu mascota?</h2>
-            <h3 class="mb-6 hd-tertiary text-blue-dark">Te ayudamos a buscarle un nuevo dueño</h3>
-            <h4 class="mb-12 hd-quaternary text-grey-dark">Solo tienes que publicar tu anuncio y esperar a que <br>
+            <h2 class="mb-4 text-green-light">¿Ya no puedes hacerte cargo de tu mascota?</h2>
+            <h3 class="mb-6 text-blue-dark">Te ayudamos a buscarle un nuevo dueño</h3>
+            <h4 class="mb-12 text-grey-dark">Solo tienes que publicar tu anuncio y esperar a que <br>
                 algún interesado se ponga en contacto</h4>
             <div>
-                <a href="" class="text-2xl text-white uppercase btn bg-blue-dark btn--full">Empezar ya</a>
+                <a href="" class="text-3xl text-white uppercase btn bg-blue-dark btn--full">Empezar ya</a>
             </div>
         </div>
         <div class="text-center d-inline-block">
@@ -21,7 +20,7 @@
 
     <section class="mb-16">
         <div class="mb-6">
-            <h3 class="text-center uppercase hd-secondary text-blue-dark md:text-left">¿Qué es Pet Shield?</h3>
+            <h3 class="text-center uppercase text-blue-dark md:text-left">¿Qué es Pet Shield?</h3>
         </div>
         <div class="flex flex-col items-start md:flex-row">
             <div class="mx-auto mb-8 md:w-4/12 md:pl-10 xl:pl-32 md:self-start">
@@ -43,7 +42,7 @@
     <section>
         <div>
             <div class="mb-6">
-                <h2 class="text-center uppercase hd-secondary text-blue-dark md:text-left">¿Cómo funciona?</h2>
+                <h3 class="text-center uppercase text-blue-dark md:text-left">¿Cómo funciona?</h3>
             </div>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, error voluptatum repudiandae vel
                 exercitationem a, minus aliquam asperiores eos ducimus ipsam temporibus consequuntur perspiciatis
@@ -55,5 +54,4 @@
         </div>
     </section>
 
-</main>
 @endsection
