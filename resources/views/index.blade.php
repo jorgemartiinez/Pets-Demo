@@ -28,7 +28,7 @@
                     alt="Ilustración Gato - Qué Es Pet Shield">
             </div>
             <div class="md:w-8/12 md:order-first">
-                <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem culpa illo repellendus
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem culpa illo repellendus
                     quibusdam
                     quidem. Nihil consectetur animi quo nulla libero blanditiis rerum, impedit mollitia cupiditate quae
                     earum modi alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus

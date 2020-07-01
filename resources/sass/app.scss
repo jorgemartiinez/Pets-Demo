@@ -20,6 +20,11 @@
     @apply bg-green-mid text-base;
 }
 
+
+.btn--link {
+    @apply text-base;
+}
+
 // * TYPO
 
 body {
@@ -50,6 +55,21 @@ p {
 h1, h2, h3, h4 {
     @apply font-semibold;
 }
+
+// * FORMS
+
+.form-label {
+    @apply block text-xl font-semibold;
+}
+
+.form-input {
+    @apply border-b-2 border-green-mid py-2 px-1 w-64;
+
+    &:focus {
+        @apply outline-none border-2 border-green-mid rounded-md;
+    }
+}
+
 
 
 @tailwind utilities;

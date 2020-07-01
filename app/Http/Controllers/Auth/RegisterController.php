@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\Providers\RouteServiceProvider;
+use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -64,10 +67,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $transaction = function ($data) {
+
+            $role = Role::find('name', 'user')->firstOrFail();
+
+            $profile = Profile::create([
+                'name' =>  $data['profile-name'],
+                'phone' => $data['profile-phone'],
+                'city' => $data['profile-city'],
+                'province' => $data['profile-province'],
+            ]);
+
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role_id' => $role->id,
+                'profile_id' => $profile->id
+            ]);
+
+            return back();
+        };
+
+        return DB::transaction($transaction);
     }
 }
