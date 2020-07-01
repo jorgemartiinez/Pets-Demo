@@ -8,7 +8,6 @@ use App\Providers\RouteServiceProvider;
 use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,6 +44,24 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $provincias = [
+            'Álava', 'Albacete', 'Alicante', 'Almería', 'Asturias', 'Avila', 'Badajoz', 'Barcelona', 'Burgos', 'Cáceres',
+            'Cádiz', 'Cantabria', 'Castellón', 'Ciudad Real', 'Córdoba', 'A Coruña', 'Cuenca', 'Gerona', 'Granada', 'Guadalajara',
+            'Guipúzcoa', 'Huelva', 'Huesca', 'Islas Baleares', 'Jaén', 'León', 'Lérida', 'Lugo', 'Madrid', 'Málaga', 'Murcia', 'Navarra',
+            'Ourense', 'Palencia', 'Las Palmas', 'Pontevedra', 'La Rioja', 'Salamanca', 'Segovia', 'Sevilla', 'Soria', 'Tarragona',
+            'Santa Cruz de Tenerife', 'Teruel', 'Toledo', 'Valencia', 'Valladolid', 'Vizcaya', 'Zamora', 'Zaragoza'
+        ];
+
+        return view('auth.register', compact('provincias'));
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -55,7 +72,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:3', 'confirmed'],
+            'phone' => ['required', 'string', 'digits:9', 'unique:profiles'],
+            'city' => ['required', 'string', 'min:2'],
+            'province' => ['required', 'string', 'min:2'],
         ]);
     }
 
@@ -67,28 +87,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $transaction = function ($data) {
+        $role = Role::where('name', 'user')->firstOrFail();;
 
-            $role = Role::find('name', 'user')->firstOrFail();
+        $profile = Profile::create([
+            'phone' => $data['phone'],
+            'city' => $data['city'],
+            'province' => $data['province'],
+        ]);
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'profile_id' => $profile->id,
+            'role_id' => $role->id,
+        ]);
 
-            $profile = Profile::create([
-                'name' =>  $data['profile-name'],
-                'phone' => $data['profile-phone'],
-                'city' => $data['profile-city'],
-                'province' => $data['profile-province'],
-            ]);
-
-            $user = User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'role_id' => $role->id,
-                'profile_id' => $profile->id
-            ]);
-
-            return back();
-        };
-
-        return DB::transaction($transaction);
+        return $user;
     }
 }

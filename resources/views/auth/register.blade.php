@@ -10,24 +10,20 @@
     </p>
 </div>
 
-
-
-<form method="POST" action="{{ route('register') }}">
+<form method="POST" action="{{ route('register') }}" novalidate>
     @csrf
 
     <div class="mb-10">
         <label for="name" class="mb-2 form-label">Nombre</label>
 
-        <div class="col-md-6">
-            <input id="name" type="text" class="form-input @error('name') border-red-500 @enderror" name="name"
-                value="{{ old('name') }}" required autocomplete="name" autofocus>
+        <input id="name" type="text" class="form-input @error('name') border-red-500 @enderror" name="name"
+            value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-            @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
+        @error('name')
+        <span class="form-error-message" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
     </div>
 
     <div class="mb-10">
@@ -37,46 +33,51 @@
             value="{{ old('email') }}" required autocomplete="email">
 
         @error('email')
-        <span class="invalid-feedback" role="alert">
+        <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
     </div>
 
     <div class="mb-10">
-        <label for="profile-phone" class="mb-2 form-label">Número Teléfono</label>
+        <label for="phone" class="mb-2 form-label">Número Teléfono</label>
 
-        <input id="profile-phone" type="text" class="form-input @error('profile-phone') border-red-500 @enderror"
-            name="profile-phone" value="{{ old('profile-phone') }}" required autocomplete="profile-phone">
+        <input id="phone" type="text" class="form-input @error('phone') border-red-500 @enderror" name="phone"
+            value="{{ old('phone') }}" required autocomplete="phone">
 
-        @error('profile-phone')
-        <span class="invalid-feedback" role="alert">
+        @error('phone')
+        <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
     </div>
 
     <div class="mb-10">
-        <label for="profile-city" class="mb-2 form-label">Provincia</label>
+        <label for="province" class="mb-2 form-label">Provincia</label>
 
-        <input id="profile-city" type="text" class="form-input @error('profile-city') border-red-500 @enderror"
-            name="profile-city" value="{{ old('profile-city') }}" required autocomplete="profile-city">
+        <select name="province" id="province" class="form-input @error('province') border-red-500 @enderror"
+            name="province" value="{{ old('province') }}" required autocomplete="province">
 
-        @error('profile-city')
-        <span class="invalid-feedback" role="alert">
+            @foreach ($provincias as $prov)
+                <option value="{{$prov}}">{{$prov}}</option>
+            @endforeach
+        </select>
+
+        @error('province')
+        <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
     </div>
 
     <div class="mb-10">
-        <label for="profile-city" class="mb-2 form-label">Localidad</label>
+        <label for="city" class="mb-2 form-label">Localidad</label>
 
-        <input id="profile-city" type="text" class="form-input @error('profile-city') border-red-500 @enderror"
-            name="profile-city" value="{{ old('profile-city') }}" required autocomplete="profile-city">
+        <input id="city" type="text" class="form-input @error('city') border-red-500 @enderror" name="city"
+            value="{{ old('city') }}" required autocomplete="city">
 
-        @error('profile-city')
-        <span class="invalid-feedback" role="alert">
+        @error('city')
+        <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
@@ -89,7 +90,7 @@
             name="password" required autocomplete="new-password">
 
         @error('password')
-        <span class="invalid-feedback" role="alert">
+        <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror

@@ -32,7 +32,7 @@
             <input id="password" type="password" class="form-input @error('password') border-red-500 @enderror"
                 name="password" required autocomplete="current-password">
             @error('password')
-            <span class="invalid-feedback" role="alert">
+            <span class="form-error-message" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror

@@ -37,4 +37,16 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    /**
+     * Override the default return path on failed login
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sendFailedLoginResponse()
+    {
+        return redirect()->to('/login'); //just an available path to test
+    }
 }
