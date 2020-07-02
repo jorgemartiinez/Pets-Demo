@@ -10,7 +10,7 @@
             <h4 class="mb-12 text-grey-dark">Solo tienes que publicar tu anuncio y esperar a que <br>
                 algún interesado se ponga en contacto</h4>
             <div>
-                <a href="" class="text-3xl text-white uppercase btn bg-blue-dark btn--full">Empezar ya</a>
+                <a href="/ads" class="text-3xl text-white uppercase btn bg-blue-dark btn--full">Empezar ya</a>
             </div>
         </div>
         <div class="text-center d-inline-block">

@@ -29,18 +29,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/ads">anuncios</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">nolose</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">nolose</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">nolose</a>
-                </li>
             </ul>
             @auth
-                Ya estás dentro papu
+            Ya estás dentro papu
             @endauth
             @guest
             <div class="flex items-center justify-center">

@@ -18,4 +18,5 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/ads/{id}', 'AdsController@show')->name('ads.show');;
 Route::get('/ads', 'AdsController@index');
