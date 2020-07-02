@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
 
-    protected $toTruncate = ['users'];
-
-
     /**
      * Seed the application's database.
      *
@@ -19,14 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         // * reset
         Model::unguard();
-        foreach ($this->toTruncate as $table) {
-            DB::table($table)->truncate();
-        }
 
         // * seeds
         $this->call(ProfileSeed::class);
         $this->call(RoleSeed::class);
         $this->call(UserSeed::class);
+        $this->call(AdSeed::class);
 
         Model::reguard();
     }

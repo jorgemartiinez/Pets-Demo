@@ -18,3 +18,4 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/ads', 'AdsController@index');

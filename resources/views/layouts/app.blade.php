@@ -27,7 +27,7 @@
                     <a class="nav-link" href="/">inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">anuncios</a>
+                    <a class="nav-link" href="/ads">anuncios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">nolose</a>

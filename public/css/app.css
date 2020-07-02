@@ -665,6 +665,9 @@ h4 {
 
 p {
   font-size: 1rem;
+  --text-opacity: 1;
+  color: #645E5E;
+  color: rgba(100, 94, 94, var(--text-opacity));
 }
 
 h1, h2, h3, h4 {
