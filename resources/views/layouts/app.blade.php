@@ -31,7 +31,20 @@
                 </li>
             </ul>
             @auth
-            Ya estás dentro papu
+            <div class="flex items-center justify-center">
+                <a href="/profile" title="Ver tu Perfil">
+                    <div class="flex flex-wrap items-center justify-center mr-4">
+                        <img class="w-12 mr-2" src="{{asset('storage/img/profiles/user.svg')}}" alt="Login">
+                        <h4 class="text-white">{{Auth::user()->name}}</h4>
+                    </div>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    {{ csrf_field() }}
+                    <button type="post" title="Cerrar Sesión">
+                        <img class="w-8 bg-white rounded-md" src="{{asset('img/icons/exit.svg')}}" alt="Login">
+                    </button>
+                </form>
+            </div>
             @endauth
             @guest
             <div class="flex items-center justify-center">

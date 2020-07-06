@@ -31,7 +31,6 @@
 
         <input id="email" type="email" class="form-input @error('email') border-red-500 @enderror" name="email"
             value="{{ old('email') }}" required autocomplete="email">
-
         @error('email')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
@@ -44,7 +43,8 @@
 
         <input id="phone" type="text" class="form-input @error('phone') border-red-500 @enderror" name="phone"
             value="{{ old('phone') }}" required autocomplete="phone">
-
+        <span class="block text-gray-600">Esta información será visible para que puedan contactarte cuando publiques un
+            anuncio.</span>
         @error('phone')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
@@ -57,9 +57,8 @@
 
         <select name="province" id="province" class="form-input @error('province') border-red-500 @enderror"
             name="province" value="{{ old('province') }}" required autocomplete="province">
-
             @foreach ($provincias as $prov)
-                <option value="{{$prov}}">{{$prov}}</option>
+            <option value="{{$prov}}">{{$prov}}</option>
             @endforeach
         </select>
 
@@ -75,7 +74,8 @@
 
         <input id="city" type="text" class="form-input @error('city') border-red-500 @enderror" name="city"
             value="{{ old('city') }}" required autocomplete="city">
-
+        <span class="block text-gray-600">Esta información se tendrá en cuanta a la hora de clasificar los
+            anuncios.</span>
         @error('city')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>

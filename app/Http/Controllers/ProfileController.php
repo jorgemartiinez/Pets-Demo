@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Ad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AdsController extends Controller
+class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +19,8 @@ class AdsController extends Controller
      */
     public function index()
     {
-        $ads = Ad::paginate(4);
-        return view('ads.index', compact('ads'));
+        $user = Auth::user();
+        return view('profile.index', compact('user'));
     }
 
     /**
@@ -25,7 +30,7 @@ class AdsController extends Controller
      */
     public function create()
     {
-        return view('ads.create');
+        //
     }
 
     /**
@@ -47,8 +52,7 @@ class AdsController extends Controller
      */
     public function show($id)
     {
-        $ad = Ad::findOrFail($id);
-        return view('ads.show', compact('ad'));
+        //
     }
 
     /**

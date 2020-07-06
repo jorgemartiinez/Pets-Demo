@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration
             $table->string('phone', 9)->unique();
             $table->string('city');
             $table->string('province');
+            $table->string('image')->default('user.svg');
             $table->timestamps();
         });
     }

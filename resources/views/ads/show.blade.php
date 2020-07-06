@@ -24,9 +24,9 @@
         <p class="mb-1">
             <strong>Género:</strong>
             @if ($ad->gender == 'male')
-                Macho
+            Macho
             @else
-                Hembra
+            Hembra
             @endif
         </p>
         <p class="mb-1"><strong>Edad:</strong> {{convertToYearsAndMonths($ad->age)}}</p>
