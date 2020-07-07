@@ -2,14 +2,20 @@
 @section('content')
 
 <section class="mb-12">
-    <h1 class="mb-4 text-blue-dark">Anuncios</h1>
+    <div class="flex flex-col items-center justify-between md:flex-row">
+        <h1 class="mb-4 text-blue-dark">Anuncios</h1>
+        <div class="mb-4 md:flex md:items-center md:mb-0">
+            <a href="/ads/create" class="mr-4 text-white btn btn--main">Crear un anuncio</a>
+            <a href="/ads/show" class="text-white btn btn--main">Ver tus anuncios</a>
+        </div>
+    </div>
     <p class="mb-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque qui ipsum, asperiores incidunt
         dignissimos,
         dolore
         odit ut voluptas deleniti mollitia debitis delectus optio iure tempore sunt maxime rerum quasi! Quis.</p>
-
     <p class="mb-1 font-semibold">Buscar anuncios por provincia</p>
     <select class="form-input">
+        <option disabled selected>Seleccionar</option>
         <option>Alicante</option>
     </select>
 

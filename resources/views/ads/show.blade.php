@@ -23,15 +23,12 @@
         <p class="mb-1"><strong>Nombre:</strong> {{$ad->name}}</p>
         <p class="mb-1">
             <strong>Género:</strong>
-            @if ($ad->gender == 'male')
-            Macho
-            @else
-            Hembra
-            @endif
+            {{($ad->gender == 'male') ? 'Macho' : 'Hembra'}}
         </p>
-        <p class="mb-1"><strong>Edad:</strong> {{convertToYearsAndMonths($ad->age)}}</p>
+        <p class="mb-1"><strong>Edad:</strong> {{convertToYearsAndMonths($ad->birthday)}}</p>
         <p class="mb-1"><strong>Cumpleaños:</strong> {{$ad->birthday}}</p>
-        <p class="mb-8"><strong>Peso:</strong> {{$ad->weight}} kg</p>
+        <p class="mb-1"><strong>Peso:</strong> {{$ad->weight}} kg</p>
+        <p class="mb-8"><strong>Esterilizado:</strong> {{($ad->sterilized) ? 'Sí' : 'No'}}</p>
 
         <h3 class="mb-2 uppercase text-green-dark">Contactar</h3>
         <p class="mb-1"><strong>Nombre anunciante:</strong> {{$ad->user->name}}</p>

@@ -18,7 +18,8 @@
             <a href="/">
                 <div class="flex flex-col items-center justify-center md:text-center">
                     <img class="w-6" src="{{asset('img/icons/shield-ico.svg')}}" alt="Shield">
-                    <h3 class="hd-secondary">Pet Shield</h3>
+                    <h3 class="hd-secondary">Pet Shield </h3>
+                    <span class="font-semibold">mini demo</span>
                 </div>
             </a>
             <ul
@@ -34,7 +35,7 @@
             <div class="flex items-center justify-center">
                 <a href="/profile" title="Ver tu Perfil">
                     <div class="flex flex-wrap items-center justify-center mr-4">
-                        <img class="w-12 mr-2" src="{{asset('storage/img/profiles/user.svg')}}" alt="Login">
+                        <img class="w-12 mr-2 rounded-full" src="{{asset('storage/img/profiles/'.Auth::user()->profile->image)}}" alt="Login">
                         <h4 class="text-white">{{Auth::user()->name}}</h4>
                     </div>
                 </a>
@@ -45,6 +46,13 @@
                     </button>
                 </form>
             </div>
+            @if (Auth::user()->isAdmin())
+            <a href="/admin" title="Ver Solicitudes">
+                <div class="fixed bottom-0 right-0 z-20 m-2 bg-red-600 shadow-md btn btn--main">
+                    <h4 class="text-white">Panel Admin</h4>
+                </div>
+            </a>
+            @endif
             @endauth
             @guest
             <div class="flex items-center justify-center">

@@ -19,10 +19,10 @@ class AdSeed extends Seeder
         $ad->animal = 'gato';
         $ad->name = 'Mike';
         $ad->gender = 'male';
-        $ad->age = 1.2;
         $ad->birthday = '2018-02-07';
         $ad->weight = 4.5;
         $ad->image = 'example.jpg';
+        $ad->sterilized = true;
         $ad->user_id = 1;
         $ad->save();
 
@@ -32,10 +32,10 @@ class AdSeed extends Seeder
         $ad->animal = 'perro';
         $ad->name = 'Karla';
         $ad->gender = 'female';
-        $ad->age = 0.8;
         $ad->birthday = '2019-10-12';
         $ad->weight = 5.2;
         $ad->image = 'bb.jpg';
+        $ad->sterilized = true;
         $ad->user_id = 1;
         $ad->save();
     }

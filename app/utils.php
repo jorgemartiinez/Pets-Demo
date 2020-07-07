@@ -1,11 +1,23 @@
 <?php
 
 /*
+RETORNAR CADENA DE AÑOS Y MESES A PARTIR DE UNA FECHA
+*/
+
+function convertToYearsAndMonths($date)
+{
+    $date1 = date_create($date);
+    $date2 = date_create(now());
+    $dateDifference = date_diff($date1, $date2)->format('%y años y %m meses');
+    return $dateDifference;
+}
+
+/*
 CONVERTIR UN VALOR DECIMAL A UNA CADENA DEL TIPO:
 1 años y 2 meses o
 6 meses
 */
-function convertToYearsAndMonths($age)
+function convertToYearsAndMonthsFromFloat($age)
 {
     $ageStr = (string) $age;
     $integer = (int) explode('.', $ageStr)[0];

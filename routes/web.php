@@ -18,7 +18,14 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/ads/{id}', 'AdsController@show')->name('ads.show');
+Route::get('/ads/show', 'AdsController@showForUser');
+Route::get('/ads/edit/{id}', 'AdsController@edit');
+Route::get('/ads/create', 'AdsController@create');
+Route::post('/ads/store', 'AdsController@store');
+Route::get('/ads/{id}', 'AdsController@show');
 Route::get('/ads', 'AdsController@index');
 
-Route::get('profile', 'ProfileController@index');
+Route::put('/profile/update', 'ProfileController@update');
+Route::get('/profile', 'ProfileController@show');
+
+Route::get('/admin', 'AdminController@index');

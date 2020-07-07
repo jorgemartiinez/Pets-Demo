@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdsController extends Controller
 {
@@ -25,7 +26,7 @@ class AdsController extends Controller
      */
     public function create()
     {
-        return view('ads.create');
+        return view('ads.create-edit');
     }
 
     /**
@@ -36,7 +37,7 @@ class AdsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -51,6 +52,12 @@ class AdsController extends Controller
         return view('ads.show', compact('ad'));
     }
 
+    public function showForUser()
+    {
+        $ads = Ad::where('user_id', '=', Auth::user()->id)->get();
+        return view('ads.show-user', compact('ads'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,7 +66,8 @@ class AdsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ad = Ad::findOrFail($id);
+        return view('ads.create-edit');
     }
 
     /**
