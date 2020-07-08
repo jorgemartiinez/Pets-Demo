@@ -1,15 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-
-<a class="inline-flex justify-center mb-8 text-white btn btn--main align-items" href="/ads">
-    <img class="mr-3" width="15" src="{{asset('img/icons/arrow-back.svg')}}" alt="Volver">
-    <span>Volver</span>
-</a>
-
-<h2 class="mb-3 text-blue-dark">Anuncios creados por ti</h2>
-<p>En esta página se mostrarán los anuncios que has creado. Tu anuncio deberá de ser aceptado por un moderador una vez
-    lo hayas publicado.</p>
-
+<h2 class="mb-4">Gestión de anuncios</h2>
+<p>Desde aquí puedes gestionar las distintas opciones de la aplicación.</p>
+<p>Puedes empezar seleccionando elementos de la parte izquierda del panel</p>
 
 <table class="mt-12 table-auto">
     <thead>
@@ -42,16 +35,17 @@
             <td class="px-4 py-2 bg-yellow-500 border" title="No se mostrará">Finalizado</td>
             @endif
             <td class="flex px-0 py-0 text-white border">
-                <form method="POST" action="/ads/destroy/{{$ad->id}}">
-                    @method('DELETE')
+                <form method="POST" action="/admin/requests/validate/{{$ad->id}}">
                     {{ csrf_field() }}
-                    <button class="mr-1 bg-red-500 btn btn--main">Eliminar</button>
+                    @if ($ad->state==0)
+                    <button class="mr-1 bg-green-500 btn btn--main">Validar</button>
+                    @else
+                    <button class="mr-1 bg-red-500 btn btn--main">Quitar publicación</button>
+                    @endif
                 </form>
-                <a href="/ads/edit/{{$ad->id}}" class="bg-green-500 btn btn--main">Editar</a>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-
 @endsection

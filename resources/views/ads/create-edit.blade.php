@@ -8,9 +8,7 @@
 </a>
 
 <h2 class="mb-3 text-blue-dark">Crear nuevo anuncio</h2>
-<p class="mb-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque officiis neque quis placeat qui odit
-    consectetur. Quod porro sint numquam vel provident aliquam exercitationem accusamus vitae suscipit, minus earum
-    similique.</p>
+<p class="mb-8">Desde esta página se pueden crear nuevos anuncios. Deberás de rellenar el formulario minuciosamiente y dando la información que se pide.</p>
 
 <form method="POST" enctype="multipart/form-data" action="/ads/store" novalidate>
     {{ csrf_field() }}
@@ -18,8 +16,8 @@
     <h3 class="mb-5 text-blue-dark">Información sobre el anuncio</h3>
     <div class="mb-12">
         <label for="title" class="mb-2 form-label">Título</label>
-        <input id="title" type="text" class="form-input @error('title') border-red-500 @enderror" title="title"
-            value="{{old('title')}}" required autocomplete="title" autofocus>
+        <input id="title" type="text" class="form-input @error('title') border-red-500 @enderror" name="title"
+            value="{{ old('title') }}" required autocomplete="title" autofocus>
         @error('title')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
@@ -30,7 +28,7 @@
     <div class="mb-12">
         <label for="description" class="mb-2 form-label">Descripción</label>
         <textarea id="description" type="text" class="form-input @error('description') border-red-500 @enderror"
-            description="description" required autocomplete="description" autofocus>{{old('description')}}</textarea>
+            name="description" required autocomplete="description" autofocus>{{ old('description') }}</textarea>
         @error('description')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
@@ -57,7 +55,7 @@
     <div class="mb-12">
         <label for="name" class="mb-2 form-label">Nombre</label>
         <input id="name" type="text" class="form-input @error('name') border-red-500 @enderror" name="name"
-            value="{{old('name')}}" required autocomplete="name" autofocus>
+            value="{{ old('name') }}" required autocomplete="name" autofocus>
         @error('name')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
@@ -82,7 +80,7 @@
     <div class="mb-12">
         <label for="weight" class="mb-2 form-label">Peso (kg)</label>
         <input id="weight" type="number" step="0.01" class="form-input @error('weight') border-red-500 @enderror"
-            weight="weight" value="{{old('weight')}}" required autocomplete="weight" autofocus>
+            name="weight" value="{{ old('weight') }}" required autocomplete="weight" autofocus>
         @error('weight')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
@@ -92,8 +90,9 @@
 
     <div class="mb-12">
         <label for="birthday" class="mb-2 form-label">Cumpleaños</label>
-        <input id="birthday" type="date" class="form-input @error('birthday') border-red-500 @enderror"
-            birthday="birthday" value="{{old('birthday')}}" required autocomplete="birthday" autofocus>
+        <input id="birthday" type="date" class="form-input @error('birthday') border-red-500 @enderror" name="birthday"
+            value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
+        <span class="block text-gray-600">A partir de esta fecha se calculará la edad del animal.</span>
         @error('birthday')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
@@ -117,14 +116,17 @@
 
     <div class="mb-12">
         <label for="image" class="mb-2 form-label">Foto</label>
-        <input id="image" type="file" class="form-input @error('image') border-red-500 @enderror"
-            value="{{old('image')}}" required autocomplete="image" autofocus>
+        <input id="image" type="file" name="image" class="form-input @error('image') border-red-500 @enderror"
+            value="{{ old('image') }}" required autocomplete="image" autofocus>
+        <span class="block text-gray-600">Ten en cuenta que esta foto será visible para todos los usuarios.</span>
         @error('image')
         <span class="form-error-message" role="alert">
             <strong>{{ $message }}</strong>
         </span>
         @enderror
     </div>
+
+    <input id="user_id" name="user_id" type="text" value="{{ Auth::user()->id }}" hidden>
 
     <button type="submit" class="text-white btn btn--main">
         {{ __('Crear anuncio') }}

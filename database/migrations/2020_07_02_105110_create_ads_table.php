@@ -17,10 +17,10 @@ class CreateAdsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->enum('animal', ['perro', 'gato', 'otro'])->unique();
+            $table->enum('animal', ['perro', 'gato']);
             $table->string('name');
             $table->date('birthday');
-            $table->enum('gender', ['male', 'female'])->unique();
+            $table->enum('gender', ['male', 'female']);
             $table->float('weight');
             $table->boolean('sterilized');
             $table->string('image');

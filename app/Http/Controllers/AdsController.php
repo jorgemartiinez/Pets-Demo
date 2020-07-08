@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Ad;
+use App\Http\Requests\AdRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class AdsController extends Controller
 {
@@ -15,7 +17,7 @@ class AdsController extends Controller
      */
     public function index()
     {
-        $ads = Ad::paginate(4);
+        $ads = Ad::where('state', 1)->paginate(4);
         return view('ads.index', compact('ads'));
     }
 
@@ -35,9 +37,25 @@ class AdsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdRequest $request)
     {
-        dd($request->all());
+        if (request('user_id') == Auth::user()->id) {
+
+            $imageArray = [];
+            $imagePath = request('image')->store('img/pets', 'public');
+            $image = Image::make(public_path("storage/${imagePath}"))->fit(650, 850); // intervention image
+            $image->save();
+            $imageArray = ['image' => $image->basename];
+
+            $req = array_merge(
+                $request->all(),
+                $imageArray
+            );
+
+            $ad = Ad::create($req);
+
+            return redirect('/ads/show');
+        }
     }
 
     /**
@@ -90,6 +108,10 @@ class AdsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ad = Ad::findOrFail($id);
+        if ($ad->user_id == Auth::user()->id) {
+            $ad->delete();
+        }
+        return redirect('/ads/show');
     }
 }
